@@ -70,7 +70,7 @@ Legend:
 
 > ➕ Added:
 >
-> 1. Started archiving template versions so they can be referenced easily via URL (microsoft.github.io/finops-toolkit/deploy/finops-hub-{version}.json).
+> 1. Started archiving template versions so they can be referenced easily via URL microsoft.github.io/finops-toolkit/deploy/finops-hub-{version}.json.
 >
 > 🛠️ Fixed:
 >
@@ -96,7 +96,7 @@ Legend:
 >
 > 1. Fixed numerous errors causing the CostManagementConnector report to not load for MCA accounts.
 > 2. Fixed incorrect filter in the Commitment discounts report ([#585](https://github.com/microsoft/finops-toolkit/issues/585)).
-> 3. Fixed data issue where Cost Management uses "1Year", "3Years", and "5Years" for the x_SkuTerm. Values should be 12, 36, and 60 ([#594](https://github.com/microsoft/finops-toolkit/issues/#594)).
+> 3. Fixed data issue where Cost Management uses "1Year", "3Years", and "5Years" for the x_SkuTerm. Values should be 12, 36, and 60 ([#594](https://github.com/microsoft/finops-toolkit/issues/594)).
 > 4. Changed the data type for the `x_Month` column to be a date.
 >
 > ✏️ Changed:
@@ -119,7 +119,7 @@ Legend:
 
 > ➕ Added:
 >
-> 1. Started archiving template versions so they can be referenced easily via URL (microsoft.github.io/finops-toolkit/deploy/{template}-{version}.json).
+> 1. Started archiving template versions so they can be referenced easily via URL microsoft.github.io/finops-toolkit/deploy/{template}-{version}.json.
 >
 > 🛠️ Fixed:
 >
@@ -265,7 +265,7 @@ Legend:
 >
 > 🛠️ Fixed:
 >
-> 1. Fixed typo in Deploy-FinOpsHub causing it to fail.
+> 1. Fixed typo in [Deploy-FinOpsHub](../_automation/powershell/hubs/Deploy-FinOpsHub.md) causing it to fail.
 >
 > 🗑️ Removed:
 >
@@ -324,10 +324,10 @@ Legend:
 > ➕ Added:
 >
 > 1. New PowerShell commands to manage FinOps hubs 0.1:
->    1. Get-FinOpsHub
->    2. Initialize-FinOpsHubDeployment
->    3. Register-FinOpsHubProviders
->    4. Remove-FinOpsHub
+>    1. [Get-FinOpsHub](../_automation/powershell/hubs/Get-FinOpsHub.md)
+>    2. [Initialize-FinOpsHubDeployment](../_automation/powershell/hubs/Initialize-FinOpsHubDeployment.md)
+>    3. [Register-FinOpsHubProviders](../_automation/powershell/hubs/Register-FinOpsHubProviders.md)
+>    4. [Remove-FinOpsHub](../_automation/powershell/hubs/Remove-FinOpsHub.md)
 
 [Download v0.1.1](https://github.com/microsoft/finops-toolkit/releases/tag/v0.1.1){: .btn .mt-2 .mb-4 .mb-md-0 .mr-4 }
 [Full changelog](https://github.com/microsoft/finops-toolkit/compare/v0.1...v0.1.1){: .btn .mt-2 .mb-4 .mb-md-0 .mr-4 }
