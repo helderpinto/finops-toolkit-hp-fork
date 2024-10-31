@@ -26,8 +26,8 @@ param(
     [Parameter(Mandatory = $false)]
     [string] $SuppressionNotes,
 
-    [ValidateSet("Snooze", "Dismiss", "Exclude")]    
     [Parameter(Mandatory = $true)]
+    [ValidateSet("Snooze", "Dismiss", "Exclude")]    
     [string] $SuppressionType
 )
 
@@ -46,6 +46,11 @@ if ([string]::IsNullOrEmpty($RecommendationId) -and [string]::IsNullOrEmpty($Res
 if ($SnoozeDays -lt 1 -and $SuppressionType -eq "Snooze")
 {
     throw "SnoozeDays greater than 0 must be provided for Snooze suppressions."
+}
+
+if ($SnoozeDays -gt 0 -and $SuppressionType -ne "Snooze")
+{
+    throw "SnoozeDays cannot be greater than 0 for non-snooze suppressions."
 }
 
 $cloudEnvironment = Get-AutomationVariable -Name "AzureOptimization_CloudEnvironment" -ErrorAction SilentlyContinue # AzureCloud|AzureChinaCloud
@@ -204,19 +209,19 @@ else
 if ($SnoozeDays -ge 1)
 {
     $now = (Get-Date).ToUniversalTime()
-    $endDate = "'$($now.Add($SnoozeDays).ToString("yyyy-MM-ddTHH:mm:00Z"))'"
+    $endDate = "'$($now.AddDays($SnoozeDays).ToString("yyyy-MM-ddTHH:mm:00Z"))'"
 }
 else {
     $endDate = "NULL"
 }
 
-Write-Host "You are suppressing the recommendation with the below details"
-Write-Host "Recommendation: $($controlRows.RecommendationDescription)"
-Write-Host "Recommendation sub-type id: $($controlRows.RecommendationSubTypeId)"
-Write-Host "Category: $($controlRows.Category)"
-Write-Host "Suppression type: $SuppressionType"
-Write-Host "Scope: $scope"
-Write-Host "End date: $endDate"
+Write-Output "You are suppressing the recommendation with the below details"
+Write-Output "Recommendation: $($controlRows.RecommendationDescription)"
+Write-Output "Recommendation sub-type id: $($controlRows.RecommendationSubTypeId)"
+Write-Output "Category: $($controlRows.Category)"
+Write-Output "Suppression type: $SuppressionType"
+Write-Output "Scope: $scope"
+Write-Output "End date: $endDate"
 
 $sqlStatement = "INSERT INTO [$suppressionsTable] VALUES (NEWID(), '$($controlRows.RecommendationSubTypeId)', '$SuppressionType', $scope, GETDATE(), $endDate, '$SuppressionAuthor', '$SuppressionNotes', 1)"
 
@@ -241,4 +246,4 @@ catch
 
 $Conn2.Close()                
 
-Write-Host "Suppression sucessfully added."
+Write-Output "Suppression sucessfully added."
